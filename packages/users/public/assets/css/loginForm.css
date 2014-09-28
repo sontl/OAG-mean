@@ -1,0 +1,289 @@
+.pic.email {
+    position: absolute;
+    background: url("/theme/assets/img/mail_login.png") no-repeat;
+    width: 30px;
+    height: 21px;
+    top: 18px;
+    right: 28px;
+}
+
+.pic.password {
+    position: absolute;
+    background: url("/theme/assets/img/eye_password.png") no-repeat 50% 50%;
+    width: 40px;
+    height: 30px;
+    top: 16px;
+    right: 22px;
+    cursor: pointer;
+}
+
+ .icon_hide_password {
+    background: url("/theme/assets/img/eye_password_disabled.png") no-repeat 50% 50%;
+    width: 40px;
+    height: 30px;
+    top: 16px;
+    right: 22px;
+}
+
+.login-form__left .hide_text_password {
+    display: none;
+    position: absolute;
+    line-height: 38px;
+    width: 125px;
+    height: 34px;
+    bottom: 39px;
+    right: -40px;
+    background: #0588a0;
+    text-align: center;
+    border-radius: 5px;
+    font-family: "proxima_nova_rgregular";
+    color: white;
+}
+
+.hide_text_password:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    border-top: 10px solid #0588a0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-left: -4px;
+}
+
+.pic.password:hover .hide_text_password {
+    display: block;
+}
+
+.icon_hide_password:hover .hide_text_password {
+    display: block;
+}
+
+.error_message {
+    display: none;
+    position: absolute;
+    line-height: 29px;
+    height: auto;
+    bottom: 67px;
+    left: 0;
+    background: blue;
+    text-align: center;
+    border-radius: 3px;
+    min-width: 30px;
+    max-width: 150px;
+}
+
+.error_message:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    border-top: 10px solid blue;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-left: -4px;
+}
+
+.button_login {
+    margin-top: 23px;
+}
+
+
+.button_login p,
+.button_send p,
+.button_register p {
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 15px;
+    font-family: "open_sans_hebrewregular";
+    vertical-align: top;
+    padding-top: 11px;
+}
+
+.button_send p {
+    margin-left: 65px;
+}
+
+.button_register {
+    margin-top: 25px;
+}
+
+.button_login a,
+.button_send a,
+.button_register a {
+    display: inline-block;
+    font-size: 15px;
+    color: #68a80c;
+    text-decoration: none;
+    margin-left: 1px;
+    padding-top: 11px;
+    vertical-align: top;
+    font-family: "open_sans_hebrewregular";
+}
+
+.login-form__center {
+    height: 100%;
+    float: left;
+    background: url("/theme/assets/img/devide_line.png") no-repeat 50% 30%;
+    padding: 0 10px;
+}
+
+.register-form .login-form__center {
+    margin-top: 38px;
+    background: url("/theme/assets/img/devide_line_long.png") no-repeat 50% 0;
+}
+
+.login-form__center p {
+    margin-top: 155px;
+    font-family: 'proxima_novalight';
+    font-size: 16px;
+}
+
+.register-form .login-form__center p {
+    margin-top: 227px;
+}
+
+ .social_wrap {
+    width: 235px;
+    height: 180px;
+    padding-left: 0;
+    display: block;
+    position:relative;
+}
+
+ .bigger {
+    height: 345px;
+    margin-top: 35px;
+}
+
+ .bigger .social {
+    top: inherit;
+    -ms-transform: none; /* IE 9 */
+    -webkit-transform: none; /* Chrome, Safari, Opera */
+    transform: none;
+}
+
+ .social {
+    margin: 0;
+    padding-left: 0;
+    display: block;
+    list-style:none;
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    -ms-transform: translate(0, -50%); /* IE 9 */
+    -webkit-transform: translate(0, -50%); /* Chrome, Safari, Opera */
+    transform: translate(0, -50%);
+}
+
+ .social_icon {
+    width: 230px;
+    height: 60px;
+    border: 1px solid #e1e1e0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+ .social_icon:hover {
+    background: #f1f1f1;
+}
+
+ .social_icon .button {
+    display: block;
+    text-decoration: none;
+    padding: 22px 0 22px 60px;
+    line-height: 1;
+    color: #959595;
+    position: relative;
+}
+
+ .social_icon .button:active {
+    color: #959595;
+}
+
+ .social_icon .button span:visited {
+    color: #959595;
+}
+
+ .social_icon_in .button:before {
+    content: '';
+    position: absolute;
+    background: url("/theme/assets/img/social_in.png") no-repeat 50% 50%;
+    width: 50px;
+    height: 47px;
+    top: 10px;
+    left: 0;
+}
+
+ .social_icon_fb .button:before {
+    content: '';
+    position: absolute;
+    background: url("/theme/assets/img/social_fb.png") no-repeat 50% 50%;
+    width: 41px;
+    height: 40px;
+    top: 10px;
+    left: 8px;
+}
+
+ .social_icon_gh .button:before {
+    content: '';
+    position: absolute;
+    background: url("/theme/assets/img/social_github.png") no-repeat 50% 50%;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    left: 8px;
+}
+
+ .social_icon_tw .button:before {
+    content: '';
+    position: absolute;
+    background: url("/theme/assets/img/social_tw.png") no-repeat 50% 50%;
+    width: 40px;
+    height: 41px;
+    top: 10px;
+    left: 8px;
+}
+
+ .social_icon_google .button:before {
+    content: '';
+    position: absolute;
+    background: url("/theme/assets/img/social_g+.png") no-repeat 50% 50%;
+    width: 40px;
+    height: 41px;
+    top: 10px;
+    left: 8px;
+}
+
+.woman_ninja_bottom {
+    position: absolute;
+    left: 21%;
+    pointer-events: none;
+}
+
+.woman_ninja_left {
+    position: absolute;
+    top: 75px;
+    left: -410px;
+    pointer-events: none;
+}
+
+.registration_form {
+    width: 440px;
+    float: left;
+    margin-right: 10px;
+}
+
+.forgot_password_form {
+    padding: 34px 27px;
+    min-height: 280px;
+    height: auto;
+    width: 465px;
+    margin-left: -232px;
+}

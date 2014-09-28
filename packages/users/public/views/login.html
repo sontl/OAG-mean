@@ -1,34 +1,179 @@
-<div data-ng-controller="LoginCtrl">
+<!--<div data-ng-controller="LoginCtrl">-->
 
-    <div class="alert alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div>
+    <!--<div class="alert alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div>-->
 
-    <h2>Login</h2>
+    <!--<h2>Login</h2>-->
 
-    <form id="login_form" ng-submit="login()">
-        <div class="input-wrapper">
-            <input required id="email_block" type="email" name="email" placeholder="Email Address" ng-model="user.email">
-            <div class="error_message">Please enter a correct info #</div>
-            <span class="pic email"></span>
+    <!--<form id="login_form" ng-submit="login()">-->
+        <!--<div class="input-wrapper">-->
+            <!--<input required id="email_block" type="email" name="email" placeholder="Email Address" ng-model="user.email">-->
+            <!--<div class="error_message">Please enter a correct info #</div>-->
+            <!--<span class="pic email"></span>-->
+        <!--</div>-->
+        <!--<div class="input-wrapper">-->
+            <!--<input required id="password_block" name="password" type="{{input.type}}" placeholder="{{input.placeholder}}" ng-model="user.password">-->
+            <!--<div class="error_message">Please enter a correct info #</div>-->
+                <!--<span class="pic password {{input.iconClass}}" ng-click = "togglePasswordVisible()">-->
+                      <!--<div class="hide_text_password">-->
+                          <!--{{input.tooltipText}}-->
+                      <!--</div>-->
+                <!--</span>-->
+        <!--</div>-->
+        <!--<div class="forgot_password">-->
+            <!--<a ui-sref='forgot-password'>Forgot your password?</a>-->
+        <!--</div>-->
+        <!--<div class="button_login">-->
+            <!--<button type="submit" class="submit_button">Login</button>-->
+            <!--<p>Don't have an account?</p>-->
+            <!--<a ui-sref='auth.register' >Sign up</a>-->
+        <!--</div>-->
+        <!--<div class="woman_ninja_bottom">-->
+            <!--<img src="/theme/assets/img/woman_ninja.png" alt="#">-->
+        <!--</div>-->
+    <!--</form>-->
+<!--</div>-->
+
+
+<section class="post-wrapper-top jt-shadow clearfix">
+    <div class="container">
+        <div class="col-lg-12">
+            <h2>Login & Register</h2>
+            <ul class="breadcrumb pull-right">
+                <li><a href="index-2.html">Home</a></li>
+                <li>Login & Register</li>
+            </ul>
         </div>
-        <div class="input-wrapper">
-            <input required id="password_block" name="password" type="{{input.type}}" placeholder="{{input.placeholder}}" ng-model="user.password">
-            <div class="error_message">Please enter a correct info #</div>
-                <span class="pic password {{input.iconClass}}" ng-click = "togglePasswordVisible()">
-                      <div class="hide_text_password">
-                          {{input.tooltipText}}
-                      </div>
-                </span>
-        </div>
-        <div class="forgot_password">
-            <a ui-sref='forgot-password'>Forgot your password?</a>
-        </div>
-        <div class="button_login">
-            <button type="submit" class="submit_button">Login</button>
-            <p>Don't have an account?</p>
-            <a ui-sref='auth.register' >Sign up</a>
-        </div>
-        <div class="woman_ninja_bottom">
-            <img src="/theme/assets/img/woman_ninja.png" alt="#">
-        </div>
-    </form>
-</div>
+    </div>
+</section><!-- end post-wrapper-top -->
+
+<section class="blog-wrapper">
+    <div class="container">
+        <div id="content" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-md-6" data-ng-controller="LoginCtrl">
+                    <div class="widget">
+                        <div class="title">
+                            <h3>Login Your Account</h3>
+                            <div class="alert alert-danger animated fadeIn" ng-show="loginerror">{{loginerror}}</div>
+                        </div><!-- end title -->
+                        <form id="loginform" name="loginform" ng-submit="login()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input class="form-control" required id="email_block" type="email"
+                                           name="email" placeholder="Email Address" ng-model="user.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input required id="password_block" name="password" type="{{input.type}}"
+                                           class="form-control" placeholder="{{input.placeholder}}" ng-model="user.password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </div>
+                            <div class="forgot_password">
+                                <a ui-sref='forgot-password'>Forgot your password?</a>
+                            </div>
+                        </form>
+                        <p>OR</p>
+                        <div class="social_wrap" ng-class="{bigger:socialButtonsCounter > 4 && !global.registerForm}">
+                            <ul class="social">
+                                <li ng-if="socialButtons.hasOwnProperty('linkedin')" class="social_icon social_icon_in">
+                                    <a href="/auth/linkedin" class="button">
+                                        <span>Log In With LinkedIn</span>
+                                    </a>
+                                </li>
+                                <li ng-if="socialButtons.hasOwnProperty('facebook')" class="social_icon social_icon_fb">
+                                    <a href="/auth/facebook" class="button">
+                                        <span>Log In With Facebook</span>
+                                    </a>
+                                </li>
+                                <li ng-if="socialButtons.hasOwnProperty('github')" class="social_icon social_icon_gh">
+                                    <a href="/auth/github" class="button">
+                                        <span>Log In With GitHub</span>
+                                    </a>
+                                </li>
+                                <li ng-if="socialButtons.hasOwnProperty('twitter')" class="social_icon social_icon_tw">
+                                    <a href="/auth/twitter" class="button">
+                                        <span>Log In With Tweeter</span>
+                                    </a>
+                                </li>
+                                <li ng-if="socialButtons.hasOwnProperty('google')" class="social_icon social_icon_google">
+                                    <a href="/auth/google" class="button">
+                                        <span>Log In With Google</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- end widget -->
+                </div><!-- end col-md-6 -->
+                <div class="col-md-6" data-ng-controller="RegisterCtrl">
+                    <div class="widget">
+                        <div class="title">
+                            <h3>Create An Account</h3>
+                        </div><!-- end title -->
+                        <div ng-repeat="error in registerError">
+                            <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
+                        </div>
+                        <div class="alert alert-danger animated fadeIn" ng-show="usernameError">{{usernameError}}</div>
+                        <div class="alert alert-danger animated fadeIn" ng-show="emailError">{{emailError}}</div>
+                        <form id="register_form" name="register_form" ng-submit="register()">
+                            <div class="form-group input-wrapper">
+                                <input type="text" required id="name" class="form-control" placeholder="Full name"
+                                       ng-model="user.name">
+                                <div class="error_message">Please enter a correct info #</div>
+                                <span class="pic user"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" required id="username" type="text" name="username" placeholder="Username"
+                                       ng-model="user.username" class="form-control">
+                                <div class="error_message">Please enter a correct info #</div>
+                                <span class="pic username"></span>
+                            </div>
+                            <div class="form-group">
+                                <input required id="email_block" type="email" name="email" class="form-control"
+                                       ng-model="user.email" placeholder="Email">
+                                <div class="error_message">Please enter a correct info #</div>
+                                <span class="pic email"></span>
+                            </div>
+                            <div class="form-group">
+                                <input required id="password_block" name="password" type="{{input.type}}"
+                                       class="form-control" placeholder="{{input.placeholder}}" ng-model="user.password">
+                                <div class="error_message">Please enter a correct info #</div>
+                                <!--<span class="pic password {{input.iconClass}}" ng-click="togglePasswordVisible()">-->
+                                      <!--<div class="hide_text_password">-->
+                                          <!--{{input.tooltipText}}-->
+                                      <!--</div>-->
+                                <!--</span>-->
+                            </div>
+                            <div class="form-group">
+                                <input required id="confirm_password" name="confirm_password" type="{{input.type}}"
+                                       class="form-control"  placeholder="{{input.placeholderConfirmPass}}" ng-model="user.confirmPassword">
+                                <div class="error_message">Please enter a correct info #</div>
+                                <!--<span class="pic password {{input.iconClassConfirmPass}}" ng-click="togglePasswordConfirmVisible()">-->
+                                      <!--<div class="hide_text_password">-->
+                                          <!--{{input.tooltipTextConfirmPass}}-->
+                                      <!--</div>-->
+                                <!--</span>-->
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Register an account">
+                            </div>
+                        </form>
+                    </div><!-- end widget -->
+                </div><!-- end col-md-6 -->
+            </div><!-- end row -->
+        </div><!-- end content -->
+    </div><!-- end container -->
+</section><!--end white-wrapper -->
+

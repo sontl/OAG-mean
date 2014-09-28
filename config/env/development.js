@@ -6,11 +6,11 @@ module.exports = {
     debug: true
   },
   app: {
-    name: 'MEAN - FullStack JS - Development'
+    name: 'Grapevine Art | Discover, Sell, Collect Vietnam\'s Best Artwork'
   },
   facebook: {
-    clientID: 'DEFAULT_APP_ID',
-    clientSecret: 'APP_SECRET',
+    clientID: '342399349255155',
+    clientSecret: '29fa87b3c564d3bf02d9d0b9e3e01f1f',
     callbackURL: 'http://localhost:3000/auth/facebook/callback'
   },
   twitter: {
@@ -24,8 +24,8 @@ module.exports = {
     callbackURL: 'http://localhost:3000/auth/github/callback'
   },
   google: {
-    clientID: 'DEFAULT_APP_ID',
-    clientSecret: 'APP_SECRET',
+    clientID: '675994177948-n4elauav37i9u91irgfkenefu84mc3et.apps.googleusercontent.com',
+    clientSecret: 'GsAzVhmxMiwol1C4eurc-H4U',
     callbackURL: 'http://localhost:3000/auth/google/callback'
   },
   linkedin: {

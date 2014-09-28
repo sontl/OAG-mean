@@ -5,20 +5,21 @@
 
   <title>{{appName}} - {{title}}</title>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-  <meta name="keywords" content="node.js, express, mongoose, mongodb, angularjs, swig">
-  <meta name="description" content="MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).">
-
+  <meta name="description" content="Explore, Sell, Collect Vietnam's Best Artwork online, discover new Artist">
+  <meta name="keywords" content="artwork, vietnam art, sell art, buy art, vietnam artwork, vietnam artist, collect art,
+        art curator, sell artwork, buy artwork, collect artwork, art advisory">
+  <meta name="author" content="Hanoi Grapevine">
   <meta property="fb:app_id" content="APP_ID">
   <meta property="og:title" content="{{appName}} - {{title}}">
-  <meta property="og:description" content="MEAN - A Modern Stack: MongoDB, ExpressJS, AngularJS, NodeJS. (BONUS: Passport User Support).">
+  <meta property="og:description" content="Explore, Sell, Collect Vietnam's Best Artwork online, discover new Artist">
   <meta property="og:type" content="website">
   <meta property="og:url" content="APP_URL">
   <meta property="og:image" content="APP_LOGO">
-  <meta property="og:site_name" content="MEAN - A Modern Stack">
+  <meta property="og:site_name" content="Grapevine ART">
   <meta property="fb:admins" content="APP_ADMIN">
 
-  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="/modules/aggregated.css">
+  <!--<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+
 
   <!-- Inline javascript. Can set the src /modules/aggregated.js?group=header-->
   <script type="text/javascript">{{headerJs|raw}}</script>
@@ -27,8 +28,26 @@
     <link rel="stylesheet" href="/{{file}}">
   {% endfor %}
 
+
+    <!----------------------- NEW ----------------------->
+
+    <!--<base href="/app/">-->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,300,400italic,300italic,700,700italic,900'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Exo:400,300,600,500,400italic,700italic,800,900' rel='stylesheet'
+          type='text/css'>
+    <!-- Support for HTML5 -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!-- Enable media queries on older bgeneral_rowsers -->
+    <!--[if lt IE 9]>
+    <script src="/bower_components/respond/dest/respond.min.js"></script>  <![endif]-->
+    <link rel="stylesheet" href="/modules/aggregated.css" media="all">
 
 </head>

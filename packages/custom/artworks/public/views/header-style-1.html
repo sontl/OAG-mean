@@ -1,0 +1,53 @@
+<header id="header-style-1">
+<div class="container">
+<nav class="navbar yamm navbar-default">
+<div class="navbar-header">
+    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a href="#/home" class="navbar-brand">Grapevine</a>
+</div><!-- end navbar-header -->
+
+<div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
+<ul class="nav navbar-nav">
+
+<li><a href="#/browse">Browse Art</a></li>
+<!-- standard drop down -->
+
+
+<li><a href="#/collections">Collections</a></li>
+<li><a href="about.html">Art Advisory</a></li>
+    <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Features <div class="arrow-up"></div></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">One-To-Watch Artist</a></li>
+            <li><a href="#">Inside The Studio</a></li>
+            <li><a href="#">Weekly Roundup</a></li>
+            <li><a href="#">100 Curators 100 Days</a></li>
+        </ul><!-- end dropdown-menu -->
+    </li><!-- end standard drop down -->
+    <li><a href="#/upload">Sell Art</a></li>
+
+<li><a href="about.html">Account</a></li>
+</ul><!-- end navbar-nav -->
+</div><!-- #navbar-collapse-1 -->			</nav><!-- end navbar yamm navbar-default -->
+</div><!-- end container -->
+</header><!-- end header-style-1 -->
+
+<script type="text/javascript-lazy" src="js/menu.js"></script>
+
+<!-- Affix menu -->
+<script type="text/javascript-lazy" >
+    (function($) {
+        "use strict";
+        $("#header-style-1").affix({
+            offset: {
+                top: 100
+                , bottom: function () {
+                    return (this.bottom = $('#copyrights').outerHeight(true))
+                }
+            }
+        })
+    })(jQuery);
+</script>

@@ -1,38 +1,98 @@
-<div class="page-header" data-ng-controller="HeaderController">
-  <div class="logo pull-left">
-    <a class="navbar-brand" ui-sref="home" mean-token="'site-title'">MEAN</a>
-  </div>
+<!--<div class="page-header" data-ng-controller="HeaderController">-->
+  <!--<div class="logo pull-left">-->
+    <!--<a class="navbar-brand" ui-sref="home" mean-token="'site-title'">MEAN</a>-->
+  <!--</div>-->
 
-  <div class="left pull-left">
-    <ul class="navbar-nav nav">
-      <li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-        <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
-      </li>
-    </ul>
-  </div>
+  <!--<div class="left pull-left">-->
+    <!--<ul class="navbar-nav nav">-->
+      <!--<li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">-->
+        <!--<a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
 
-  <div class="account">
-    <div class="text-edit">
-      <div class="pull-right" data-ng-show="global.authenticated" mean-token-editable></div>
-      <div class="pull-right" data-ng-show="global.authenticated" mean-translate></div>
-    </div>
-    <ul class="navbar-nav nav" data-ng-hide="global.authenticated">
-      <li><a ui-sref='auth.register'>Join</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li><a ui-sref='auth.login'>Log In</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav nav" data-ng-show="global.authenticated">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          {{global.user.name}} <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="/logout">Log Out</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</div>
+  <!--<div class="account">-->
+    <!--<div class="text-edit">-->
+      <!--<div class="pull-right" data-ng-show="global.authenticated" mean-token-editable></div>-->
+      <!--<div class="pull-right" data-ng-show="global.authenticated" mean-translate></div>-->
+    <!--</div>-->
+    <!--<ul class="navbar-nav nav" data-ng-hide="global.authenticated">-->
+      <!--<li><a ui-sref='auth.register'>Join</a>-->
+      <!--</li>-->
+      <!--<li class="divider-vertical"></li>-->
+      <!--<li><a ui-sref='auth.login'>Log In</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <!--<ul class="navbar-nav nav" data-ng-show="global.authenticated">-->
+      <!--<li class="dropdown">-->
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+          <!--{{global.user.name}} <b class="caret"></b>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu">-->
+          <!--<li><a href="/logout">Log Out</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<header id="header-style-1" data-ng-controller="HeaderController">
+    <div class="container">
+        <nav class="navbar yamm navbar-default">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#/home" class="navbar-brand">Grapevine</a>
+            </div><!-- end navbar-header -->
+
+            <div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="#/browse">Browse Art</a></li>
+                    <!-- standard drop down -->
+
+
+                    <li><a href="#/collections">Collections</a></li>
+                    <li><a href="about.html">Art Advisory</a></li>
+                    <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Features <div class="arrow-up"></div></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">One-To-Watch Artist</a></li>
+                            <li><a href="#">Inside The Studio</a></li>
+                            <li><a href="#">Weekly Roundup</a></li>
+                            <li><a href="#">100 Curators 100 Days</a></li>
+                        </ul><!-- end dropdown-menu -->
+                    </li><!-- end standard drop down -->
+                    <li><a href="#/upload">Sell Art</a></li>
+
+                    <li class="dropdown" data-ng-show="global.authenticated" ><a href="about.html" data-toggle="dropdown" class="dropdown-toggle">Account <div class="arrow-up"></div></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/logout">Log Out</a></li>
+                        </ul><!-- end dropdown-menu -->
+                    </li>
+                    <li><a href="#!/auth/login" data-ng-hide="global.authenticated">Register</a></li>
+                </ul><!-- end navbar-nav -->
+            </div><!-- #navbar-collapse-1 -->			</nav><!-- end navbar yamm navbar-default -->
+    </div><!-- end container -->
+</header><!-- end header-style-1 -->
+
+<script type="text/javascript-lazy" src="/theme/assets/js/menu.js"></script>
+
+<!-- Affix menu -->
+<script type="text/javascript-lazy" >
+    (function($) {
+        "use strict";
+        $("#header-style-1").affix({
+            offset: {
+                top: 100
+                , bottom: function () {
+                    return (this.bottom = $('#copyrights').outerHeight(true))
+                }
+            }
+        })
+    })(jQuery);
+</script>

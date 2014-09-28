@@ -1,0 +1,49 @@
+<!-- ADD Switcher -->
+
+    <div class="demo-icon"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+    <div class="form_holder">
+        <h4>CHOOSE YOUR STYLE</h4>
+        <p>Choose a color via Color picker or click the predefined style names!</p>
+        <div class="predefined_styles">
+            <form>
+                <select id="headers" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                    <option value="">Change Header</option>
+                    <option value="header1.html">Header Style 1</option>
+                    <option value="header2.html">Header Style 2</option>
+                    <option value="header3.html">Header Style 3</option>
+                </select>
+                <select id="footers" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                    <option value="">Change Footer</option>
+                    <option value="footer1.html#footer-style-1">Footer Style 1</option>
+                    <option value="footer2.html#footer-style-2">Footer Style 2</option>
+                    <option value="footer3.html#footer-style-3">Footer Style 3</option>
+                </select>
+                <select id="layouts" class="show-menu-arrow selectpicker"  onChange="document.location = this.value" value="GO">
+                    <option value="">Select Layout</option>
+                    <option value="fullwidth_layout.html">Fullwidth Layout</option>
+                    <option value="boxed_layout.html">Boxed Layout</option>
+                </select>
+            </form>
+            <hr>
+            <h4>LIGHT OR DARK</h4>
+            <a href="#" rel="light" class="styleswitch"><img class="img-thumbnail" src="switcher/images/light.png" alt=""></a>
+            <a href="#" rel="dark" class="styleswitch"><img class="img-thumbnail" src="switcher/images/dark.png" alt=""></a>
+            <hr>
+            <h4>PREDEFINED SKINS</h4>
+            <a href="#" rel="green" class="styleswitch"><img src="switcher/images/green.png" alt=""></a>
+            <a href="#" rel="tael" class="styleswitch"><img src="switcher/images/tael.png" alt=""></a>
+            <a href="#" rel="light-green" class="styleswitch"><img src="switcher/images/light-green.png" alt=""></a>
+            <a href="#" rel="yellow" class="styleswitch"><img src="switcher/images/yellow.png" alt=""></a>
+            <a href="#" rel="blue" class="styleswitch"><img src="switcher/images/blue.png" alt=""></a>
+            <a href="#" rel="light-blue" class="styleswitch"><img src="switcher/images/light-blue.png" alt=""></a>
+            <a href="#" rel="purple" class="styleswitch"><img src="switcher/images/purple.png" alt=""></a>
+            <a href="#" rel="violet" class="styleswitch"><img src="switcher/images/violet.png" alt=""></a>
+            <a href="#" rel="red" class="styleswitch"><img src="switcher/images/red.png" alt=""></a>
+            <a href="#" rel="orange" class="styleswitch"><img src="switcher/images/orange.png" alt=""></a>
+        </div>
+        <hr>
+        <p>This tools is just for demo site.</p>
+    </div>
+
+<!-- Demo Switcher JS -->
+<script type="text/javascript-lazy" src="switcher/js/fswit.js"></script>
