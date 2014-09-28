@@ -7,7 +7,7 @@
 /* Directives */
 
 
-angular.module('mean.artworks', []).
+angular.module('mean.artworks').
     directive('appVersion', ['version', function (version) {
         return function (scope, elm, attrs) {
             elm.text(version);
