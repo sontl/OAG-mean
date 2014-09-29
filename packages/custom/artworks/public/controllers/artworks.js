@@ -81,7 +81,7 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
         }
 
         var uploader = $scope.uploader = new FileUploader({
-            url: 'http://localhost:8080/v1/object'
+            url: '/photos'
         });
 
         // FILTERS
