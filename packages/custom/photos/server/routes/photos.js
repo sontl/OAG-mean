@@ -41,6 +41,10 @@ module.exports = function (Photos, app, auth, database) {
 
     app.route('/photos')
         .post(auth.requiresLogin, multipartMiddleware, photos.create);
-    app.route('/photos')
-        .delete(auth.requiresLogin, hasAuthorization, photos.destroy);
+    app.route('/photos/:photoId')
+         .get(photos.show)
+         .delete(auth.requiresLogin, hasAuthorization, photos.destroy);
+
+    // Finish with setting up the photoId param
+    app.param('photoId', photos.photo);
 };
