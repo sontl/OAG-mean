@@ -11,10 +11,11 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
         };
 
         $scope.create = function(isValid) {
+            console.log('Is form valid: ', isValid);
             if (isValid) {
                 var artwork = new Artworks({
                     title: this.title,
-                    content: this.content
+                    photos: photos
                 });
                 artwork.$save(function(response) {
                     $location.path('artworks/' + response._id);
@@ -80,6 +81,8 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
             $scope.currentTpl='artwork-details.html';
         }
 
+        var photos = [];
+
         var uploader = $scope.uploader = new FileUploader({
             url: '/photos'
         });
@@ -124,6 +127,10 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
         };
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
             console.info('onCompleteItem', fileItem, response, status, headers);
+            if (status === 200) {
+                photos.push(response);
+                console.info('photos: ',  photos);
+            }
         };
         uploader.onCompleteAll = function() {
             console.info('onCompleteAll');

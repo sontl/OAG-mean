@@ -22,12 +22,16 @@ var ArtworkSchema = new Schema({
   },
   content: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+  photos : {
+      type: [],
+      ref: 'Photo'
   }
 });
 
