@@ -42,6 +42,7 @@ describe('<Unit Test>', function() {
       it('should be able to save without problems', function(done) {
         return artwork.save(function(err) {
           should.not.exist(err);
+          console.log('artwork title: ', artwork.title);
           artwork.title.should.equal('Artwork Title');
           artwork.content.should.equal('Artwork Content');
           artwork.user.should.not.have.length(0);
