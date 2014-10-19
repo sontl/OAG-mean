@@ -54,7 +54,6 @@ Theme.register(function(app, auth, database) {
     Theme.aggregateAsset('js', 'jquery.parallax-1.1.3.js');
     Theme.aggregateAsset('js', 'jquery.simple-text-rotator.js');
     Theme.aggregateAsset('js', 'wow.min.js');
-    Theme.aggregateAsset('js', 'ng-tags-input.min.js');
     Theme.aggregateAsset('js', 'jquery.isotope.min.js');
 
     /**

@@ -6,7 +6,7 @@
 var Module = require('meanio').Module;
 
 var Artworks = new Module('artworks');
-Artworks.angularDependencies(['angularFileUpload']);
+Artworks.angularDependencies(['angularFileUpload', 'ngTagsInput']);
 /*
  * All MEAN packages require registration
  * Dependency injection is used to define required modules

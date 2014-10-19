@@ -184,6 +184,28 @@
                 <label for="input3" class="col-sm-2 control-label">Category</label>
                 <div class="col-sm-10">
                     <div class="btn-group" dropdown is-open="status.isopen" id="input3">
+                    <select class="form-control" ng-model="selectedCategory" ng-options="category.title for category in categories">
+                        <option value="">-- choose category --</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input3" class="col-sm-2 control-label">Subject</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
+                        <select class="form-control" ng-model="selectedSubject" ng-options="subject.title for subject in subjects">
+                            <option value="">-- choose subject --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="input3" class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
                         <button type="button" class="btn btn-primary dropdown-toggle">
                             -- Select Category <span class="caret"></span>
                         </button>
@@ -249,24 +271,6 @@
                     <tags-input ng-model="tags" id="input6">
                         <auto-complete source="loadTags($query)"></auto-complete>
                     </tags-input>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="input7" class="col-sm-2 control-label">Subject</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isSubjectOpen" id="input7">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            -- Select Subject <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Drawing</a></li>
-                            <li><a href="#">Installation</a></li>
-                            <li><a href="#">New Media</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Painting</a></li>
-                            <li><a href="#">Photography</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 

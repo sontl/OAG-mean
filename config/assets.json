@@ -19,7 +19,8 @@
                 "bower_components/modernizr/modernizr.js",
                 "bower_components/es5-shim/es5-shim.min.js",
                 "bower_components/es5-shim/es5-sham.min.js",
-                "bower_components/bootstrap/dist/js/bootstrap.min.js"
+                "bower_components/bootstrap/dist/js/bootstrap.min.js",
+                "bower_components/ng-tags-input/ng-tags-input.min.js"
             ]
         }
     }

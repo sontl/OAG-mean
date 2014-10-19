@@ -1,13 +1,68 @@
 'use strict';
 
 angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$stateParams', '$location',
-    'Global', 'Artworks', 'FileUploader',
-    function($scope, $stateParams, $location, Global, Artworks, FileUploader) {
+    'Global', 'Artworks', 'FileUploader', 'Attributes', '$q',
+    function($scope, $stateParams, $location, Global, Artworks, FileUploader, Attributes, $q) {
         $scope.global = Global;
-
+        $scope.categories = [];
+        $scope.styles = [];
+        $scope.mediums = [];
+        $scope.subjects = [];
         $scope.hasAuthorization = function(artwork) {
             if (!artwork || !artwork.user) return false;
             return $scope.global.isAdmin || artwork.user._id === $scope.global.user._id;
+        };
+
+        Attributes.query(function(attributes) {
+            for (var i = 0; i < attributes.length; i++) {
+                var attribute = attributes[i];
+                if (attribute && attribute.type === 'CATEGORY') {
+                    $scope.categories.push(attribute);
+                } else if (attribute && attribute.type === 'STYLE') {
+                    var style = attribute;
+                    style.text = attribute.title;
+                    $scope.styles.push(style);
+                } else if (attribute && attribute.type === 'MEDIUM') {
+                    $scope.mediums.push(attribute);
+                } else if (attribute && attribute.type === 'SUBJECT')
+                    $scope.subjects.push(attribute);
+            }
+        });
+        $scope.selectedCategory = {};
+
+        $scope.tags = [
+            { text: 'just' },
+            { text: 'some' },
+            { text: 'cool' },
+            { text: 'tags' }
+        ];
+
+        function asyncGetTag(query) {
+            // perform some asynchronous operation, resolve or reject the promise when appropriate.
+            console.log($q);
+            var deferred = $q.defer();
+                var res = [];
+                console.log(query);
+                for (var i = 0; i< $scope.styles.length; i++) {
+                    var style = $scope.styles[i];
+                    console.log('style: ', style)
+                    if (query && style.text.indexOf(query) != -1 ) {
+                        console.log('found style: ', style.text);
+                        res.push(style);
+                    }
+                }
+            deferred.resolve(res);
+            return deferred.promise;
+        }
+
+        $scope.loadTags = function(query) {
+            var promise = asyncGetTag(query);
+            console.log('promise init', promise);
+            promise.then(function(response) {
+                console.log(response);
+            }, function(reason) {
+                alert('Failed: ' + reason);
+            });
         };
 
         $scope.create = function(isValid) {
@@ -135,5 +190,44 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
         uploader.onCompleteAll = function() {
             console.info('onCompleteAll');
         };
+
+        /**
+         * For datepicker controller
+         */
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function () {
+            $scope.dt = null;
+        };
+
+        // Disable weekend selection
+        $scope.disabled = function(date, mode) {
+            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+        };
+
+        $scope.toggleMin = function() {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+
+        $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+            console.log('time picker opened: ' + $scope.opened);
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
     }
 ]);
