@@ -1,0 +1,14 @@
+<section class="blog-wrapper"  data-ng-controller="AttributesController" data-ng-init="findOne()">
+    <span>{{attribute.title}}</span> /
+    <span>{{attribute.type}}</span>
+    <h2>{{attribute.description}}</h2>
+    <div data-ng-if="isAdministrator(attribute)">
+        <a class="btn" href="/#!/attributes/{{attribute._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(attribute);">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <div>{{attribute.content}}</div>
+</section>

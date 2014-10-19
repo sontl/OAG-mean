@@ -1,0 +1,39 @@
+To create attributes:
+
+<section class="blog-wrapper"  data-ng-controller="AttributesController">
+    <div class="clearfix"></div>
+    <div class="container">
+    <form name="attributeForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(attributeForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.title.$invalid }">
+            <label mean-token="'create-title'" class="col-md-3 control-label">Title</label>
+            <div class="col-md-9">
+                <input name="title" type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
+                <div ng-show="submitted && attributeForm.title.$invalid" class="help-block">
+                    <p ng-show="attributeForm.title.$error.required">Title is required</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.type.$invalid }">
+            <label mean-token="'create-content'" for="type" class="col-md-3 control-label">Type</label>
+            <div class="col-md-9">
+                <input name="type" data-ng-model="type" id="type" cols="30" rows="10" placeholder="Type" class="form-control" required/>
+                <div ng-show="submitted && attributeForm.type.$invalid" class="help-block">
+                    <p ng-show="attributeForm.type.$error.required">Type is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.description.$invalid }">
+            <label mean-token="'create-content'" for="description" class="col-md-3 control-label">description</label>
+            <div class="col-md-9">
+                <textarea name="description" data-ng-model="description" id="description" cols="30" rows="10" placeholder="description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </form>
+        </div>
+</section>

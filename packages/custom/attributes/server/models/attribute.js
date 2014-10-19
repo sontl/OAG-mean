@@ -43,4 +43,13 @@ AttributeSchema.path('title').validate(function(title) {
     return !!title;
 }, 'Title cannot be blank');
 
+/**
+ * Statics
+ */
+AttributeSchema.statics.load = function(id, cb) {
+    this.findOne({
+        _id: id
+    }).exec(cb);
+};
+
 mongoose.model('Attribute', AttributeSchema);

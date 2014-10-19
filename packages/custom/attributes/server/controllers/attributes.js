@@ -1,7 +1,7 @@
 /**
  * Created by sontl on 18/10/14.
  */
-
+'use strict';
 /*
     Module Dependencies
  */
@@ -28,11 +28,57 @@ exports.attribute = function(req, res, next, id) {
     });
 }
 
+
+/**
+ * Update an attribute
+ */
+exports.update = function(req, res) {
+    var attribute = req.attribute;
+
+    attribute = _.extend(attribute, req.body);
+
+    attribute.save(function(err) {
+        if (err) {
+            return res.json(500, {
+                error: 'Cannot update the attribute'
+            });
+        }
+        res.json(attribute);
+
+    });
+};
+
+/**
+ * Delete an attribute
+ */
+exports.destroy = function(req, res) {
+    var attribute = req.attribute;
+
+    attribute.remove(function(err) {
+        if (err) {
+            return res.json(500, {
+                error: 'Cannot delete the attribute'
+            });
+        }
+        res.json(attribute);
+
+    });
+};
+
+/**
+ * Show an attribute
+ */
+exports.show = function(req, res) {
+    res.json(req.attribute);
+};
+
+
 /**
  * Create an Attribute
  */
 exports.create = function(req, res) {
     var attribute = new Attribute(req.body);
+    attribute.type = attribute.type.toUpperCase();
     attribute.save(function(err) {
        if (err) {
            return res.json(500, {
@@ -43,8 +89,12 @@ exports.create = function(req, res) {
     });
 }
 
-var types = function(type){
-    Attribute.find({type : type}).exec(function(err, attributes) {
+var types = function(type, req, res){
+    var query = {};
+    if (type) {
+        query = {type : type};
+    }
+    Attribute.find(query).exec(function(err, attributes) {
         if (err) {
             return res.json(500, {
                 error: 'Cannot list the ' + type
@@ -55,17 +105,17 @@ var types = function(type){
 }
 
 exports.all = function(req, res) {
-    types();
+    types(null, req, res);
 }
 
 exports.categories = function(req, res) {
-    types(type.category);
+    types(type.category.toUpperCase(), req, res);
 }
 
 exports.styles = function(req, res) {
-    types(type.style);
+    types(type.style.toUpperCase(), req, res);
 }
 
 exports.mediums = function(req, res) {
-    types(type.medium);
+    types(type.medium.toUpperCase(), req, res);
 }

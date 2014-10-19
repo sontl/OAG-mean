@@ -1,0 +1,38 @@
+<section class="blog-wrapper"  data-ng-controller="AttributesController" data-ng-init="findOne()">
+    <div class="clearfix"></div>
+    <div class="container">
+    <form name="attributeForm" class="form-horizontal col-md-6" role="form" data-ng-submit="update(attributeForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.title.$invalid }">
+            <label mean-token="'edit-title'" for="title" class="col-md-2 control-label">Title</label>
+            <div class="col-md-10">
+                <input name="title" type="text" class="form-control" data-ng-model="attribute.title" id="title" placeholder="Title" required>
+                <div ng-show="submitted && attributeForm.title.$invalid" class="help-block">
+                    <p ng-show="attributeForm.title.$error.required">Title is required</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.type.$invalid }">
+            <label mean-token="'edit-type'" for="type" class="col-md-2 control-label">Type</label>
+            <div class="col-md-10">
+                <input name="type" data-ng-model="attribute.type" id="type" cols="30" rows="10" placeholder="Type" class="form-control" required/>
+                <div ng-show="submitted && attributeForm.type.$invalid" class="help-block">
+                    <p ng-show="attributeForm.type.$error.required">Type is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && attributeForm.description.$invalid }">
+            <label mean-token="'edit-type'" for="description" class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+                <textarea name="description" data-ng-model="attribute.description" id="description" cols="30" rows="10"
+                          placeholder="Description" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</section>

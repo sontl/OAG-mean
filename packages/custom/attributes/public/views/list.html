@@ -1,0 +1,20 @@
+<section class="blog-wrapper"  data-ng-controller="AttributesController" data-ng-init="find()">
+    <ul class="attributes unstyled">
+
+        <li data-ng-repeat="attribute in attributes | orderBy:type:reverse">
+            <a data-ng-href="#!/attributes/{{attribute._id}}">{{attribute.title}}</a>
+        <span data-ng-if="isAdministrator(attribute)">
+          <a class="btn" href="/#!/attributes/{{attribute._id}}/edit">
+              <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(attribute);">
+              <i class="glyphicon glyphicon-trash"></i>
+          </a>
+          <span>{{attribute.type}}</span>
+        </span>
+            <span>{{attribute.description}}</span>
+        </li>
+    </ul>
+    <h1 data-ng-hide="!attributes || attributes.length">No attributes yet. <br> Why don't you <a href="/#!/attributes/create">Create One</a>?</h1>
+    <h1 data-ng-show="attributes && attributes.length > 0"> <a href="/#!/attributes/create">Add more attribute</a>?</h1>
+</section>
