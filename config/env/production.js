@@ -30,9 +30,9 @@ module.exports = {
     name: 'MEAN - A Modern Stack - Production'
   },
   facebook: {
-    clientID: 'APP_ID',
-    clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    clientID: '865758700109059',
+    clientSecret: '067b47a0b8c292574956e5693e8164c1',
+    callbackURL: 'http://grapevine.gallery:3000/auth/facebook/callback'
   },
   twitter: {
     clientID: 'CONSUMER_KEY',
@@ -45,9 +45,9 @@ module.exports = {
     callbackURL: 'http://localhost:3000/auth/github/callback'
   },
   google: {
-    clientID: 'APP_ID',
-    clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    clientID: '675994177948-59akj8f63d6pjcvmpnv5rhcnmto1ot1n.apps.googleusercontent.com',
+    clientSecret: 'VMXQfFgbSzXCrKMKC2jisIyn',
+    callbackURL: 'http://grapevine.gallery:3000/auth/google/callback'
   },
   linkedin: {
     clientID: 'API_KEY',
