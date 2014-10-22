@@ -13,28 +13,41 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
             return $scope.global.isAdmin || artwork.user._id === $scope.global.user._id;
         };
 
+        //init data for categories, styles, mediums
         Attributes.query(function(attributes) {
             for (var i = 0; i < attributes.length; i++) {
                 var attribute = attributes[i];
                 if (attribute && attribute.type === 'CATEGORY') {
                     $scope.categories.push(attribute);
                 } else if (attribute && attribute.type === 'STYLE') {
-                    var style = attribute;
-                    style.text = attribute.title;
-                    $scope.styles.push(style);
+                    attribute.text = attribute.title;
+                    $scope.styles.push(attribute);
                 } else if (attribute && attribute.type === 'MEDIUM') {
                     $scope.mediums.push(attribute);
-                } else if (attribute && attribute.type === 'SUBJECT')
+                } else if (attribute && attribute.type === 'SUBJECT') {
                     $scope.subjects.push(attribute);
+                }
             }
         });
         $scope.selectedCategory = {};
+        $scope.selectedSubject = {};
+        $scope.styleTags = [
+            { text: 'Data' },
+            { text: 'Documentary' },
+            { text: 'Fine Art' },
+            { text: 'Folk' }
+        ];
 
-        $scope.tags = [
-            { text: 'just' },
-            { text: 'some' },
-            { text: 'cool' },
-            { text: 'tags' }
+        $scope.mediumTags = [
+            { text: 'Digital' },
+            { text: 'Interactive'}
+        ];
+
+        $scope.materialTags = [
+            { text: 'Bronze' },
+            { text: 'Canvas' },
+            { text: 'Glass' },
+            { text: 'Oil' }
         ];
 
         function asyncGetTag(query) {
@@ -67,11 +80,38 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
 
         $scope.create = function(isValid) {
             console.log('Is form valid: ', isValid);
+            var styles = [];
+            for (var i=0; i< $scope.styleTags.length; i++) {
+                styles.push($scope.styleTags[i].text);
+            }
+            var materials = [];
+            for (var i=0; i< $scope.materialTags.length; i++) {
+                materials.push($scope.materialTags[i].text);
+            }
+            var mediums = [];
+            for (var i=0; i< $scope.mediumTags.length; i++) {
+                mediums.push($scope.mediumTags[i].text);
+            }
             if (isValid) {
                 var artwork = new Artworks({
                     title: this.title,
-                    photos: photos
+                    photos: $scope.photos,
+                    styles: styles,
+                    materials: materials,
+                    subject: this.selectedSubject,
+                    category: this.selectedCategory,
+                    dateCreated : this.dateCreated,
+                    price: this.price,
+                    dimensions: this.dimensions,
+                    description: this.description,
+                    isMixedMedia: this.isMixedMedia,
+                    mediums: mediums,
+                    keywords: this.keywords,
+                    isCopyright: this.isCopyright,
+                    isForSell: this.isForSell,
+                    isFraming: this.isFraming
                 });
+                console.log("saved artworkd: " , artwork);
                 artwork.$save(function(response) {
                     $location.path('artworks/' + response._id);
                 });
@@ -119,7 +159,13 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
             Artworks.query(function(artworks) {
                 $scope.artworks = artworks;
             });
+
         };
+
+        Artworks.query({ userId : $scope.global.user._id},function(artworks) {
+            $scope.moreArtworks = artworks;
+            console.log('more artworks of user:', artworks);
+        });
 
         $scope.findOne = function() {
             Artworks.get({
@@ -133,13 +179,14 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
 
         $scope.hideUploadStandards = function() {
             $scope.isHideUploadStandards = !$scope.isHideUploadStandards;
-            $scope.currentTpl='artwork-details.html';
         }
 
-        var photos = [];
+        $scope.photos = [];
 
         var uploader = $scope.uploader = new FileUploader({
-            url: '/photos'
+            url: '/photos',
+            queueLimit : 4,
+            autoUpload : true
         });
 
         // FILTERS
@@ -150,6 +197,18 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
                 return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
             }
         });
+
+        //show artwork details if photos more than 1
+        $scope.$watch(function() {
+            return $scope.photos;
+        }, function() {
+            console.log($scope.photos);
+            if ($scope.photos && $scope.photos.length > 0){
+                $scope.isHideUploadStandards = true;
+            } else {
+                $scope.isHideUploadStandards = false;
+            }
+        }, true);
 
         // CALLBACKS
 
@@ -183,8 +242,8 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
         uploader.onCompleteItem = function(fileItem, response, status, headers) {
             console.info('onCompleteItem', fileItem, response, status, headers);
             if (status === 200) {
-                photos.push(response);
-                console.info('photos: ',  photos);
+                $scope.photos.push(response);
+                console.info('photos: ',  $scope.photos);
             }
         };
         uploader.onCompleteAll = function() {
@@ -228,6 +287,7 @@ angular.module('mean.artworks').controller('ArtworksController', ['$scope', '$st
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
-
     }
+
+
 ]);

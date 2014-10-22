@@ -3,70 +3,70 @@
         <div class="col-lg-12">
             <h2>Artwork Details</h2>
             <ul class="breadcrumb pull-right">
-                <li><a href="index-2.html">Browse</a></li>
+                <li><a href="#!/browse">Browse</a></li>
                 <li>Artwork Details</li>
             </ul>
         </div>
     </div>
 </section><!-- end post-wrapper-top -->
 
-<section class="blog-wrapper">
+<section class="blog-wrapper" data-ng-controller="ArtworksController" data-ng-init="findOne()">
 <div class="container">
 <div class="shop_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <div class="general_row">
     <div class="shop-left shop_item col-lg-6">
         <div class="entry">
-            <img src="/artworks/assets/demos/featured-artwork/BA-3.jpg" alt="" class="img-responsive">
+            <img src="/photos/{{artwork.photos[0]._id}}" alt="" class="img-responsive">
             <div class="magnifier">
                 <div class="buttons">
-                    <a href="/artworks/assets/demos/featured-artwork/BA-12.jpg" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
+                    <a href="/photos/{{artwork.photos[0]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
                     <a class="st" rel="bookmark" href="#"><span class="fa fa-heart"></span></a>
                     <a class="sg" rel="bookmark" href="#/shopcart"><span class="fa fa-shopping-cart"></span></a>
                 </div>
             </div><!-- end magnifier -->
         </div><!-- entry -->
 
-        <!--<div class="thumbnails clearfix">-->
-            <!--<div class="entry first">-->
-                <!--<img class="img-responsive" src="/artworks/assets/demos/featured-artwork/BA-11.jpg" alt="" />-->
-                <!--<div class="magnifier">-->
-                    <!--<div class="buttons">-->
-                        <!--<a href="/artworks/assets/demos/shop_11.jpg" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>-->
-                    <!--</div>&lt;!&ndash; end buttons &ndash;&gt;-->
-                <!--</div>&lt;!&ndash; end magnifier &ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="entry">-->
-                <!--<img class="img-responsive" src="/artworks/assets/demos/featured-artwork/BA-9.jpg" alt="" />-->
-                <!--<div class="magnifier">-->
-                    <!--<div class="buttons">-->
-                        <!--<a href="/artworks/assets/demos/shop_02.jpg" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>-->
-                    <!--</div>&lt;!&ndash; end buttons &ndash;&gt;-->
-                <!--</div>&lt;!&ndash; end magnifier &ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="entry last">-->
-                <!--<img class="img-responsive" src="/artworks/assets/demos/featured-artwork/BA-7.jpg" alt="" />-->
-                <!--<div class="magnifier">-->
-                    <!--<div class="buttons">-->
-                        <!--<a href="/artworks/assets/demos/shop_03.jpg" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>-->
-                    <!--</div>&lt;!&ndash; end buttons &ndash;&gt;-->
-                <!--</div>&lt;!&ndash; end magnifier &ndash;&gt;-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="thumbnails clearfix" ng-if="artwork.photos.length > 1">
+            <div class="entry first" ng-if="artwork.photos.length > 1">
+                <img class="img-responsive" src="/photos/{{artwork.photos[1]._id}}" alt="" />
+                <div class="magnifier">
+                    <div class="buttons">
+                        <a href="/photos/{{artwork.photos[1]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
+                    </div><!-- end buttons -->
+                </div><!-- end magnifier -->
+            </div>
+            <div class="entry" ng-if="artwork.photos.length > 2">
+                <img class="img-responsive" src="/photos/{{artwork.photos[2]._id}}" alt="" />
+                <div class="magnifier">
+                    <div class="buttons">
+                        <a href="/photos/{{artwork.photos[2]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
+                    </div><!-- end buttons -->
+                </div><!-- end magnifier -->
+            </div>
+            <div class="entry last" ng-if="artwork.photos.length > 3">
+                <img class="img-responsive" src="/photos/{{artwork.photos[3]._id}}" alt="" />
+                <div class="magnifier">
+                    <div class="buttons">
+                        <a href="/photos/{{artwork.photos[3]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
+                    </div><!-- end buttons -->
+                </div><!-- end magnifier -->
+            </div>
+        </div>
     </div><!-- end shop-left -->
 
     <div class="shop-right col-lg-6">
 
         <div class="title">
-            <h2>Abstraction Of Thinking - Mien Pham </h2>
+            <h2>{{artwork.title}} - {{artwork.user.name}}</h2>
             <!--<div class="rating">-->
                 <!--<i class="fa fa-star"></i>-->
                 <!--<i class="fa fa-star"></i>-->
                 <!--<i class="fa fa-star"></i>-->
                 <!--<i class="fa fa-star"></i>-->
                 <!--<i class="fa fa-star-o"></i>-->
-            <!--</div>&lt;!&ndash; rating &ndash;&gt;-->
+            <!--</div><!-- rating -->
                             <span class="price">
-                            	$120.00
+                            	{{artwork.price | currency }}
 							</span>
                             <span class="compoare pull-right">
                             	<a href="#/profile">Artist Profile</a>
@@ -75,7 +75,7 @@
         </div><!-- end title -->
 
         <div class="shop_desc">
-            <p>Describing her approach as “intuition combined with thinking,” Rachel Harrison engages with art history and contemporary culture, and the role of the artist and sculpture in society, in her own flamboyant, totemic sculptures and installations. </p>
+            <p>{{artwork.description}}</p>
         </div><!-- end shop_desc -->
 
         <div class="shop_item_details">
@@ -83,9 +83,11 @@
                 <h2>Product Details</h2>
             </div><!-- end title -->
             <ul>
-                <li><strong>Size:</strong> 15.7 H x 12.6 W x 0 in mixed on paper</li>
-                <li><strong>Category:</strong> Contain, Pain</li>
-                <li><strong>Tags:</strong> radiography, body, Mixed Media, collage, drawing, man</li>
+                <li><strong>Size:</strong> {{artwork.dimensions.height}} H x {{artwork.dimensions.width}} W x {{artwork.dimensions.depth}} in mixed on paper</li>
+                <li><strong>Category:</strong>{{artwork.category.title}}</li>
+                <li><strong>Materials:</strong><span ng-repeat="material in artwork.materials">{{material}}, </span></li>
+                <li><strong>Styles:</strong><span ng-repeat="style in artwork.styles">{{style}}, </span></li>
+                <li><strong>Mediums:</strong><span ng-repeat="medium in artwork.mediums">{{medium}}, </span></li>
             </ul>
         </div><!-- end shop_item_details -->
 
@@ -100,7 +102,7 @@
                         <!--</div>-->
                     <!--</form>-->
                 <!--</div>-->
-            <!--</div>&lt;!&ndash; end pull-left &ndash;&gt;-->
+            <!--</div><!-- end pull-left -->
 
             <div class="pull-right">
                 <div class="btn-shop">
@@ -127,18 +129,18 @@
                     <!--<div class="about_section">-->
                         <!--<div class="entry padding-top">-->
                             <!--<a href="/artworks/assets/demos/shop_04.jpg" title="" rel="prettyPhoto[product-gallery]"><img class="img-top img-responsive" src="/artworks/assets/demos/shop_12.jpg" alt="" /></a>-->
-                        <!--</div>&lt;!&ndash; end entry &ndash;&gt;-->
-                    <!--</div>&lt;!&ndash; end about_section &ndash;&gt;-->
+                        <!--</div><!-- end entry -->
+                    <!--</div><!-- end about_section -->
                 <!--</div>-->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="title"><h3>Arbstract Of Thinking - Mien Pham </h3></div>
+                    <div class="title"><h3>{{artwork.title}} - {{artwork.user.name}} </h3></div>
                     <ul>
-                        <li>Drawing: Conte, Paint and Plastic on Paper.</li>
-                        <li>Size: 15.7 H x 12.6 W x 0 in mixed on paper</li>
+                        <li>{{artwork.description}}</li>
+                        <li>Size: {{artwork.dimensions.height}} H x {{artwork.dimensions.width}} W x {{artwork.dimensions.depth}} in mixed on paper</li>
                         <li>Keywords: radiography, body, Mixed Media, collage, drawing, man</li>
                         <li>Natural fading</li>
                     </ul>
-                    <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum..</p>
+                    <p>{{artwork.description}}</p>
                 </div>
             </div>
             <div class="tab-pane" id="tab2">
@@ -217,17 +219,17 @@
         </div><!-- end tab-content -->
     </div><!-- end tabbable -->
 </div><!-- end general_row -->
-
+<div class="container">
 <div class="carousel_wrapper">
     <div class="title">
-        <h2>MORE BY MIEN PHAM</h2>
+        <h2>MORE BY {{artwork.user.name}}</h2>
     </div><!-- end title -->
 
     <div class="shop_wrapper padding-top">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 first">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-repeat="artwork in moreArtworks | limitTo:4">
         <div class="shop_item">
             <div class="entry">
-                <img src="/artworks/assets/demos/featured-artwork/BA-1.jpg" alt="" class="img-responsive">
+                <img src="/photos/{{artwork.photos[0]}}" alt="" class="img-responsive">
                 <div class="magnifier">
                     <div class="buttons">
                         <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
@@ -236,85 +238,19 @@
             </div><!-- end entry -->
             <div class="shop_desc">
                 <div class="shop_title pull-left">
-                    <a href="#/workdetails"><span>Artwork Name Here</span></a>
-                    <span class="cats"><a href="#">Painting</a>, <a href="#">Mien Pham</a></span>
+                    <a href="#!/artworks/{{artwork._id}}"><span>{{artwork.title}}</span></a>
+                    <span class="cats"><a href="#">Painting</a>, <a href="#">{{artwork.user.name}}</a></span>
                 </div>
                         	<span class="price pull-right">
-                            	$89.00
+                            	{{artwork.price | currency}}
 							</span>
             </div><!-- end shop_desc -->
         </div><!-- end item -->
     </div><!-- end col-lg-3 -->
-
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="shop_item">
-            <div class="entry">
-                <img src="/artworks/assets/demos/featured-artwork/BA-2.jpg" alt="" class="img-responsive">
-                <div class="magnifier">
-                    <div class="buttons">
-                        <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
-                    </div><!-- end buttons -->
-                </div><!-- end magnifier -->
-            </div><!-- end entry -->
-            <div class="shop_desc">
-                <div class="shop_title pull-left">
-                    <a href="#/workdetails"><span>Artwork Name Here</span></a>
-                    <span class="cats"><a href="#">Painting</a>, <a href="#">Mien Pham</a></span>
-                </div>
-                        	<span class="price pull-right">
-                            	$34.00
-							</span>
-            </div><!-- end shop_desc -->
-        </div><!-- end item -->
-    </div><!-- end col-lg-3 -->
-
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="shop_item">
-            <div class="entry">
-                <img src="/artworks/assets/demos/featured-artwork/BA-3.jpg" alt="" class="img-responsive">
-                <div class="magnifier">
-                    <div class="buttons">
-                        <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
-                    </div><!-- end buttons -->
-                </div><!-- end magnifier -->
-            </div><!-- end entry -->
-            <div class="shop_desc">
-                <div class="shop_title pull-left">
-                    <a href="#/workdetails"><span>Artwork Name Here</span></a>
-                    <span class="cats"><a href="#">Painting</a>, <a href="#">Mien Pham</a></span>
-                </div>
-                        	<span class="price pull-right">
-                            	$61.00
-							</span>
-            </div><!-- end shop_desc -->
-        </div><!-- end item -->
-    </div><!-- end col-lg-3 -->
-
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 last">
-        <div class="shop_item">
-            <div class="entry">
-                <img src="/artworks/assets/demos/featured-artwork/BA-4.jpg" alt="" class="img-responsive">
-                <div class="magnifier">
-                    <div class="buttons">
-                        <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
-                    </div><!-- end buttons -->
-                </div><!-- end magnifier -->
-            </div><!-- end entry -->
-            <div class="shop_desc">
-                <div class="shop_title pull-left">
-                    <a href="#/workdetails"><span>Artwork Name Here</span></a>
-                    <span class="cats"><a href="#">Painting</a>, <a href="#">Mien Pham</a></span>
-                </div>
-                        	<span class="price pull-right">
-                            	$33.00
-							</span>
-            </div><!-- end shop_desc -->
-        </div><!-- end item -->
-    </div><!-- end col-lg-3 -->
-
     </div><!-- end col-lg-3 -->
     </div><!-- end shop-wrapper -->
-
+</div>
+<div class="container">
 <div class="carousel_wrapper">
     <div class="title">
         <h2>YOU MIKE LIKE</h2>
@@ -412,8 +348,7 @@
     </div><!-- end col-lg-3 -->
 </div><!-- end shop-wrapper -->
 </div><!-- end carousel_wrapper -->
-
-
+</div>
 
 </div><!-- end carousel_wrapper -->
 

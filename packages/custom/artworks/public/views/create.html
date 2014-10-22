@@ -1,4 +1,3 @@
-<!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
 <section data-ng-controller="ArtworksController">
 <div  nv-file-drop="" uploader="uploader">
 
@@ -8,21 +7,13 @@
 
             <div class="col-md-3">
 
-                <h3>Select files</h3>
+                <h3>Select files (maximum 4 photos)</h3>
 
                 <div ng-show="uploader.isHTML5">
                     <!-- 3. nv-file-over uploader="link" over-class="className" -->
                     <div class="well my-drop-zone" nv-file-over="" uploader="uploader">
                         Drop your file here
                     </div>
-
-                    <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}"
-                    <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
-                        <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
-                            Another drop zone with its own settings
-                        </div>
-                    </div>
-                     -->
                 </div>
 
                 <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
@@ -43,6 +34,7 @@
 
                 <p>Queue length: {{ uploader.queue.length }}</p>
                 -->
+                <div id="uploadArea" >
                 <h2>Upload Image Preview</h2>
                 <table class="table">
                     <thead>
@@ -60,11 +52,11 @@
                             <strong>{{ item.file.name }}</strong>
                             <!-- Image preview -->
                             <!--auto height-->
-                            <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                            <!--<div ng-thumb="{ file: item.file, width: 200 }"></div>-->
                             <!--auto width-->
-                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 200 }"></div>
                             <!--fixed width and height -->
-                            <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                            <!--<div ng-thumb="{ file: item.file, width: 200, height: 200 }"></div>-->
                         </td>
                         <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
                         <td ng-show="uploader.isHTML5">
@@ -78,10 +70,10 @@
                             <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                         </td>
                         <td nowrap>
-                            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                <span class="glyphicon glyphicon-upload"></span> Upload
-                            </button>
-                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                            <!--<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">-->
+                                <!--<span class="glyphicon glyphicon-upload"></span> Upload-->
+                            <!--</button>-->
+                            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-hide="!item.isUploading">
                                 <span class="glyphicon glyphicon-ban-circle"></span> Cancel
                             </button>
                             <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
@@ -91,26 +83,26 @@
                     </tr>
                     </tbody>
                 </table>
-
-                <div>
-                    <div>
-                        Upload progress:
-                        <div class="progress" style="">
-                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-                        <span class="glyphicon glyphicon-upload"></span> Upload all
-                    </button>
-                    <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                    </button>
-                    <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-                        <span class="glyphicon glyphicon-trash"></span> Remove all
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="hideUploadStandards()">Edit Details</button>
                 </div>
+                <!--<div>-->
+                    <!--<div>-->
+                        <!--Upload progress:-->
+                        <!--<div class="progress" style="">-->
+                            <!--<div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">-->
+                        <!--<span class="glyphicon glyphicon-upload"></span> Upload all-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">-->
+                        <!--<span class="glyphicon glyphicon-ban-circle"></span> Cancel all-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">-->
+                        <!--<span class="glyphicon glyphicon-trash"></span> Remove all-->
+                    <!--</button>-->
+
+                    <!--<button type="button" class="btn btn-primary btn-lg pull-right" ng-click="hideUploadStandards()">Edit Details</button>-->
+                <!--</div>-->
                 <div id="uploadStandards" ng-hide="isHideUploadStandards">
                     <h2>Upload Standards</h2>
                     <p>Dealing in the digital world, artwork must not only meet the scrutiny of art critics, but also JPG quality;
@@ -132,197 +124,195 @@
                         </accordion>
                     </div><!-- end widget -->
                 </div>
-                <div id="artwork-details-content" ng-include src="currentTpl"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-</section>
-<script type="text/ng-template" id="artwork-details.html">
-    <div class="clearfix"></div>
-    <hr>
-    <div class="doc">
-        <h3>Artwork Information</h3>
-        <form name="artworkForm" class="form-horizontal" role="form" data-ng-submit="create(artworkForm.$valid)" novalidate>
-            <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid }">
-                <label for="title" class="col-sm-2 control-label">Title</label>
-                <div class="col-sm-10">
-                    <input type="title" class="form-control" id="title" data-ng-model="title" placeholder="Title" required>
-                </div>
-                <div ng-show="submitted && artworkForm.title.$invalid" class="help-block">
-                    <p ng-show="artworkForm.title.$error.required">Title is required</p>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">Description</label>
-                <div class="col-sm-10">
-                    <textarea name="description" id="description" rows="5" cols="80" class="form-control"
-                            data-ng-model="description"></textarea>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="dateCreated" class="col-sm-2 control-label">Date Created</label>
-                <div class="col-md-6">
-                    <p class="input-group">
-                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt"
-                               is-open="opened" min-date="minDate" max-date="'2015-06-22'" id="dateCreated"
-                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                <div id="artwork-details-content">
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="doc" ng-show="isHideUploadStandards">
+                        <h3>Artwork Information</h3>
+                        <form name="artworkForm" class="form-horizontal" role="form" data-ng-submit="create(artworkForm.$valid)" novalidate>
+                            <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid }">
+                                <label for="title" class="col-sm-2 control-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="title" class="form-control" id="title" data-ng-model="title" placeholder="Title" required>
+                                </div>
+                                <div ng-show="submitted && artworkForm.title.$invalid" class="help-block">
+                                    <p ng-show="artworkForm.title.$error.required">Title is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description" class="col-sm-2 control-label">Description</label>
+                                <div class="col-sm-10">
+                                    <textarea name="description" id="description" rows="5" cols="80" class="form-control"
+                                              data-ng-model="description" required></textarea>
+                                </div>
+                                <div ng-show="submitted && artworkForm.description.$invalid" class="help-block">
+                                    <p ng-show="artworkForm.description.$error.required">Description is required</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateCreated" class="col-sm-2 control-label">Date Created</label>
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" datepicker-popup="{{format}}" data-ng-model="dateCreated"
+                                               is-open="opened" min-date="minDate" max-date="'2015-06-22'" id="dateCreated"
+                                               datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" required />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-calendar" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
-                    </p>
-                </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="category" class="col-sm-2 control-label">Category</label>
+                                <div class="col-sm-10">
+                                    <div class="btn-group" dropdown is-open="status.isopen" id="category">
+                                        <select class="form-control" data-ng-model="selectedCategory" ng-options="category.title for category in categories">
+                                            <option value="">-- choose category --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input3" class="col-sm-2 control-label">Subject</label>
+                                <div class="col-sm-10">
+                                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
+                                        <select class="form-control" data-ng-model="selectedSubject" ng-options="subject.title for subject in subjects">
+                                            <option value="">-- choose subject --</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="input3" class="col-sm-2 control-label">Category</label>-->
+                                <!--<div class="col-sm-10">-->
+                                    <!--<div class="btn-group" dropdown is-open="status.isopen" id="input3">-->
+                                        <!--<button type="button" class="btn btn-primary dropdown-toggle">-->
+                                            <!---- Select Category <span class="caret"></span>-->
+                                        <!--</button>-->
+                                        <!--<ul class="dropdown-menu" role="menu">-->
+                                            <!--<li><a href="#">Drawing</a></li>-->
+                                            <!--<li class="divider"></li>-->
+                                            <!--<li><a href="#">Painting</a></li>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" data-ng-model="isMixedMedia"> This piece of art is Mixed Media.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Mediums</label>
+                                <div class="col-sm-10">
+                                    <tags-input data-ng-model="mediumTags" id="mediums" name="mediums">
+                                        <auto-complete source="loadTags($query)"></auto-complete>
+                                    </tags-input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Materials</label>
+                                <div class="col-sm-10">
+                                    <tags-input data-ng-model="materialTags" id="materials" name="materials">
+                                        <auto-complete source="loadTags($query)"></auto-complete>
+                                    </tags-input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Styles</label>
+                                <div class="col-sm-10">
+                                    <tags-input data-ng-model="styleTags" id="styles" name="styles">
+                                        <auto-complete source="loadTags($query)"></auto-complete>
+                                    </tags-input>
+                                </div>
+                            </div>
 
-            </div>
+                            <div class="form-group">
+                                <label for="dimensions" class="col-sm-2 control-label">Dimensions</label>
+                                <div class="col-sm-10" id="dimensions">
+                                    <div class="col-sm-2">
+                                        H <input type="text" size="4" data-ng-model="dimensions.height"/> cm
+                                    </div>
+                                    <div class="col-sm-2">
+                                        W <input type="text" size="4" data-ng-model="dimensions.width" /> cm
+                                    </div>
+                                    <div class="col-sm-2">
+                                        D <input type="text" size="4" data-ng-model="dimensions.depth" /> cm
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                                <p class="help-block">All Dimension Fields Are Required.</p>
+                            </div>
 
-            <div class="form-group">
-                <label for="input3" class="col-sm-2 control-label">Category</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
-                    <select class="form-control" ng-model="selectedCategory" ng-options="category.title for category in categories">
-                        <option value="">-- choose category --</option>
-                    </select>
+                            <div class="form-group">
+                                <label for="keywords" class="col-sm-2 control-label">Keywords</label>
+                                <div class="col-sm-10">
+                                    <textarea name="keywords" id="keywords" rows="5"
+                                              cols="80" class="form-control"></textarea>
+                                </div>
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> This piece of art is Adult Content.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"/>
+                                <div class="col-sm-11">
+                                    <label class="checkbox payment-method inline">
+                                        <input type="checkbox" id="copyright" data-ng-model="isCopyright"> I am the artist and I own the copyright for this work.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"/>
+                                <div class="col-sm-11">
+                                    <label class="checkbox payment-method inline">
+                                        <input type="checkbox" id="isForSell" data-ng-model="isForSell"> I want to sell the original.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="col-sm-2 control-label">Price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="keywords" id="price" size="10" data-ng-model="price"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="profit" class="col-sm-2 control-label">Your profit</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="profit" id="profit" size="10" data-ng-model="profit"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="framing" class="col-sm-2 control-label">Framing</label>
+                                <div class="checkbox col-sm-10">
+                                    <label>
+                                        <input type="checkbox" id="framing" data-ng-model="isFraming"> This item is framed.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-11">
+                                    <button type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
+                                    <button type="button" class="btn btn-default btn-lg">CANCEL</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label for="input3" class="col-sm-2 control-label">Subject</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
-                        <select class="form-control" ng-model="selectedSubject" ng-options="subject.title for subject in subjects">
-                            <option value="">-- choose subject --</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="input3" class="col-sm-2 control-label">Category</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isopen" id="input3">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            -- Select Category <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Drawing</a></li>
-                            <li><a href="#">Installation</a></li>
-                            <li><a href="#">New Media</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Painting</a></li>
-                            <li><a href="#">Photography</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> This piece of art is Mixed Media.
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="input4" class="col-sm-2 control-label">Mediums</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isMediumsOpen" id="input4">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            -- Select Category <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Drawing</a></li>
-                            <li><a href="#">Installation</a></li>
-                            <li><a href="#">New Media</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Painting</a></li>
-                            <li><a href="#">Photography</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="input5" class="col-sm-2 control-label">Materials</label>
-                <div class="col-sm-10">
-                    <div class="btn-group" dropdown is-open="status.isMaterialsOpen" id="input5">
-                        <button type="button" class="btn btn-primary dropdown-toggle">
-                            -- Select Category <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Drawing</a></li>
-                            <li><a href="#">Installation</a></li>
-                            <li><a href="#">New Media</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Painting</a></li>
-                            <li><a href="#">Photography</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="input6" class="col-sm-2 control-label">Style</label>
-                <div class="col-sm-10">
-                    <tags-input ng-model="tags" id="input6">
-                        <auto-complete source="loadTags($query)"></auto-complete>
-                    </tags-input>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="input7" class="col-sm-2 control-label">Dimensions</label>
-                <div class="col-sm-10">
-                    <div class="col-sm-2">
-                        H <input type="text" size="4" /> cm
-                    </div>
-                    <div class="col-sm-2">
-                        W <input type="text" size="4" /> cm
-                    </div>
-                    <div class="col-sm-2">
-                        D <input type="text" size="4"  /> cm
-                    </div>
-                    <div class="col-sm-4"></div>
-                </div>
-                <p class="help-block">All Dimension Fields Are Required.</p>
-            </div>
-
-            <div class="form-group">
-                <label for="input7" class="col-sm-2 control-label">Keywords</label>
-                <div class="col-sm-10">
-                    <textarea name="keyword" id="keyword" rows="5"
-                              cols="80" class="form-control"></textarea>
-                </div>
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> This piece of art is Adult Content.
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-1"/>
-                <div class="col-sm-11">
-                    <label class="checkbox payment-method inline">
-                        <input type="checkbox" id="customCheck3" value="option3"> I am the artist and I own the copyright for this work.
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-11">
-                    <button type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
-                    <button type="button" class="btn btn-default btn-lg">CANCEL</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-</script>
+</div>
+</section>
+
 
 

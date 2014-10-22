@@ -27,10 +27,10 @@ angular.module('mean.artworks').config(['$stateProvider',
                 templateUrl: 'artworks/views/index.html'
             }).state('all artworks', {
                 url: '/artworks',
-                templateUrl: 'artworks/views/list.html',
+                templateUrl: 'artworks/views/list.html'
             }).state('browse artworks', {
                 url: '/browse',
-                templateUrl: 'artworks/views/list.html',
+                templateUrl: 'artworks/views/list.html'
             }).state('create artwork', {
                 url: '/artworks/create',
                 templateUrl: 'artworks/views/create.html',
