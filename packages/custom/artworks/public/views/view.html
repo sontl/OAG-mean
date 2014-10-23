@@ -16,7 +16,7 @@
 <div class="general_row">
     <div class="shop-left shop_item col-lg-6">
         <div class="entry">
-            <img src="/photos/{{artwork.photos[0]._id}}" alt="" class="img-responsive">
+            <img ng-src="/photos/{{artwork.photos[0]._id}}" alt="" class="img-responsive">
             <div class="magnifier">
                 <div class="buttons">
                     <a href="/photos/{{artwork.photos[0]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
@@ -28,7 +28,7 @@
 
         <div class="thumbnails clearfix" ng-if="artwork.photos.length > 1">
             <div class="entry first" ng-if="artwork.photos.length > 1">
-                <img class="img-responsive" src="/photos/{{artwork.photos[1]._id}}" alt="" />
+                <img class="img-responsive" ng-src="/photos/{{artwork.photos[1]._id}}" alt="" />
                 <div class="magnifier">
                     <div class="buttons">
                         <a href="/photos/{{artwork.photos[1]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
@@ -36,7 +36,7 @@
                 </div><!-- end magnifier -->
             </div>
             <div class="entry" ng-if="artwork.photos.length > 2">
-                <img class="img-responsive" src="/photos/{{artwork.photos[2]._id}}" alt="" />
+                <img class="img-responsive" ng-src="/photos/{{artwork.photos[2]._id}}" alt="" />
                 <div class="magnifier">
                     <div class="buttons">
                         <a href="/photos/{{artwork.photos[2]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
@@ -44,7 +44,7 @@
                 </div><!-- end magnifier -->
             </div>
             <div class="entry last" ng-if="artwork.photos.length > 3">
-                <img class="img-responsive" src="/photos/{{artwork.photos[3]._id}}" alt="" />
+                <img class="img-responsive" ng-src="/photos/{{artwork.photos[3]._id}}" alt="" />
                 <div class="magnifier">
                     <div class="buttons">
                         <a href="/photos/{{artwork.photos[3]._id}}" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><span class="fa fa-search"></span></a>
@@ -128,7 +128,7 @@
                 <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">-->
                     <!--<div class="about_section">-->
                         <!--<div class="entry padding-top">-->
-                            <!--<a href="/artworks/assets/demos/shop_04.jpg" title="" rel="prettyPhoto[product-gallery]"><img class="img-top img-responsive" src="/artworks/assets/demos/shop_12.jpg" alt="" /></a>-->
+                            <!--<a href="/artworks/assets/demos/shop_04.jpg" title="" rel="prettyPhoto[product-gallery]"><img class="img-top img-responsive" ng-src="/artworks/assets/demos/shop_12.jpg" alt="" /></a>-->
                         <!--</div><!-- end entry -->
                     <!--</div><!-- end about_section -->
                 <!--</div>-->
@@ -147,7 +147,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="about_section">
                         <div class="entry padding-top">
-                            <a href="/artworks/assets/demos/featured-artwork/BA-15.jpg" title="" rel="prettyPhoto[product-gallery]"><img class="img-top img-responsive" src="/artworks/assets/demos/featured-artwork/BA-7.jpg" alt="" /></a>
+                            <a href="/artworks/assets/demos/featured-artwork/BA-15.jpg" title="" rel="prettyPhoto[product-gallery]"><img class="img-top img-responsive" ng-src="/artworks/assets/demos/featured-artwork/BA-7.jpg" alt="" /></a>
                         </div><!-- end entry -->
                     </div><!-- end about_section -->
                 </div>
@@ -164,7 +164,7 @@
                     <ul class="media-list">
                         <li class="media general">
                             <a class="pull-left" href="#" style="width: 74px; height: 74px;">
-                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" src="/artworks/assets/demos/featuredartists/Ha-Manh-Thang-portrait1-130x130.jpg">
+                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" ng-src="/artworks/assets/demos/featuredartists/Ha-Manh-Thang-portrait1-130x130.jpg">
                             </a>
                             <div class="media-body">
                                 <h5 class="media-heading"><a href="#">Ha Manh Thang</a></h5>
@@ -173,7 +173,7 @@
                         </li><!-- media general -->
                         <li class="media general">
                             <a class="pull-left" href="#" style="width: 74px; height: 74px;">
-                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" src="/artworks/assets/demos/featuredartists/Nguyen-Huy-An-portrait1-130x130.jpg">
+                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" ng-src="/artworks/assets/demos/featuredartists/Nguyen-Huy-An-portrait1-130x130.jpg">
                             </a>
                             <div class="media-body">
                                 <h5 class="media-heading"><a href="#">Nguyen Huy An</a></h5>
@@ -182,7 +182,7 @@
                         </li><!-- media general -->
                         <li class="media general">
                             <a class="pull-left" href="#" style="width: 74px; height: 74px;">
-                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" src="/artworks/assets/demos/featuredartists/Nguyen-Quang-Huy-portrait-130x130.jpg">
+                                <img class="media-object img-thumbnail" data-src="holder.js/64x64" alt="64x64" ng-src="/artworks/assets/demos/featuredartists/Nguyen-Quang-Huy-portrait-130x130.jpg">
                             </a>
                             <div class="media-body">
                                 <h5 class="media-heading"><a href="#">Nguyen Quang Huy</a></h5>
@@ -229,7 +229,7 @@
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-repeat="artwork in moreArtworks | limitTo:4">
         <div class="shop_item">
             <div class="entry">
-                <img src="/photos/{{artwork.photos[0]}}" alt="" class="img-responsive">
+                <img ng-src="/photos/{{artwork.photos[0]}}" alt="" class="img-responsive">
                 <div class="magnifier">
                     <div class="buttons">
                         <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
@@ -260,7 +260,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 first">
             <div class="shop_item">
                 <div class="entry">
-                    <img src="/artworks/assets/demos/featured-artwork/BA-5.jpg" alt="" class="img-responsive">
+                    <img ng-src="/artworks/assets/demos/featured-artwork/BA-5.jpg" alt="" class="img-responsive">
                     <div class="magnifier">
                         <div class="buttons">
                             <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
@@ -282,7 +282,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="shop_item">
                 <div class="entry">
-                    <img src="/artworks/assets/demos/featured-artwork/BA-6.jpg" alt="" class="img-responsive">
+                    <img ng-src="/artworks/assets/demos/featured-artwork/BA-6.jpg" alt="" class="img-responsive">
                     <div class="magnifier">
                         <div class="buttons">
                             <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
@@ -304,7 +304,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="shop_item">
                 <div class="entry">
-                    <img src="/artworks/assets/demos/featured-artwork/BA-7.jpg" alt="" class="img-responsive">
+                    <img ng-src="/artworks/assets/demos/featured-artwork/BA-7.jpg" alt="" class="img-responsive">
                     <div class="magnifier">
                         <div class="buttons">
                             <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
@@ -326,7 +326,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 last">
             <div class="shop_item">
                 <div class="entry">
-                    <img src="/artworks/assets/demos/featured-artwork/BA-8.jpg" alt="" class="img-responsive">
+                    <img ng-src="/artworks/assets/demos/featured-artwork/BA-8.jpg" alt="" class="img-responsive">
                     <div class="magnifier">
                         <div class="buttons">
                             <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>

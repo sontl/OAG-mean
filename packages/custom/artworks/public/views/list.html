@@ -109,7 +109,7 @@
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-repeat="artwork in artworks">
     <div class="shop_item">
         <div class="entry">
-            <img src="/photos/{{artwork.photos[0]}}" alt="" class="img-responsive">
+            <img ng-src="/photos/{{artwork.photos[0]}}" alt="" class="img-responsive">
             <div class="magnifier">
                 <div class="buttons">
                     <a class="st btn btn-default" rel="bookmark" href="#/shopcart">Add to Cart</a>
