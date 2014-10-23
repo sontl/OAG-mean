@@ -32,7 +32,7 @@ module.exports = {
   facebook: {
     clientID: '865758700109059',
     clientSecret: '067b47a0b8c292574956e5693e8164c1',
-    callbackURL: 'http://grapevine.gallery:3000/auth/facebook/callback'
+    callbackURL: 'http://grapevine.gallery/auth/facebook/callback'
   },
   twitter: {
     clientID: 'CONSUMER_KEY',
@@ -47,7 +47,7 @@ module.exports = {
   google: {
     clientID: '675994177948-59akj8f63d6pjcvmpnv5rhcnmto1ot1n.apps.googleusercontent.com',
     clientSecret: 'VMXQfFgbSzXCrKMKC2jisIyn',
-    callbackURL: 'http://grapevine.gallery:3000/auth/google/callback'
+    callbackURL: 'http://grapevine.gallery/auth/google/callback'
   },
   linkedin: {
     clientID: 'DEFAULT_API_KEY',
